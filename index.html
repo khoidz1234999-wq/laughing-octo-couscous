@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#090b14">
+<link rel="icon" href="data:,">
+<title>Khoidz Overflow • Cloud Phone</title>
+<style>
+:root{--bg:#090b14;--panel:#141827cc;--line:#ffffff18;--text:#f4f6ff;--muted:#98a2bd;--cyan:#70edff;--violet:#ad8bff;--green:#63f0b2}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 10% 0%,#2a205e 0,transparent 38%),radial-gradient(ellipse at 90% 20%,#10404c 0,transparent 34%),var(--bg);color:var(--text);font:14px system-ui,-apple-system,Segoe UI,sans-serif;min-height:100vh}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background-image:linear-gradient(#ffffff06 1px,transparent 1px),linear-gradient(90deg,#ffffff06 1px,transparent 1px);background-size:36px 36px}
+.wrap{max-width:1180px;margin:auto;padding:25px 18px 45px;position:relative}.top,.brand,.actions,.head,.stats,.specs,.cardbuttons{display:flex;align-items:center;gap:12px}.top,.head{justify-content:space-between;flex-wrap:wrap}.logo{width:45px;height:45px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,var(--cyan),var(--violet));color:#090b14;font-weight:950;font-size:17px;box-shadow:0 0 28px #70edff35}.brand h1{font-size:15px;letter-spacing:.7px;margin:0}.brand p{font-size:10px;letter-spacing:1.8px;color:var(--muted);margin:4px 0 0}.pill{padding:8px 11px;border:1px solid var(--line);border-radius:99px;background:#ffffff08;font-size:11px;color:#dbe2f7}.dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);margin-right:7px;box-shadow:0 0 9px var(--green)}
+.hero{display:grid;grid-template-columns:1.3fr .7fr;gap:17px;margin:32px 0 27px}.panel,.device{border:1px solid var(--line);background:var(--panel);backdrop-filter:blur(16px);border-radius:22px;box-shadow:0 18px 60px #0003}.hero-main{padding:28px;overflow:hidden;position:relative}.eyebrow{color:var(--cyan);font-size:10px;font-weight:800;letter-spacing:2px}.hero h2{font-size:clamp(31px,5vw,48px);line-height:1.05;letter-spacing:-1.7px;margin:14px 0}.gradient{background:linear-gradient(90deg,var(--cyan),#c6a5ff);color:transparent;background-clip:text;-webkit-background-clip:text}.hero p{color:var(--muted);line-height:1.75;max-width:570px}.actions{flex-wrap:wrap;margin-top:22px}.btn{border:0;border-radius:11px;padding:12px 15px;font-size:12px;font-weight:800;cursor:pointer;transition:.18s}.btn:hover{transform:translateY(-2px);filter:brightness(1.1)}.primary{background:linear-gradient(110deg,var(--cyan),#b8a2ff);color:#080b14}.secondary{background:#ffffff08;border:1px solid var(--line);color:var(--text)}.hero-side{padding:23px;display:flex;flex-direction:column;justify-content:space-between;min-height:220px}.muted{color:var(--muted);font-size:11px}.big{font-size:35px;font-weight:850;letter-spacing:-1px;margin:7px 0}.bar{height:6px;border-radius:99px;background:#ffffff12;overflow:hidden;margin:12px 0}.bar span{display:block;height:100%;width:35%;background:linear-gradient(90deg,var(--cyan),var(--violet));border-radius:99px}.head{margin:26px 0 15px}.head h3{margin:0;font-size:18px}.head p{margin:5px 0 0;color:var(--muted);font-size:11px}.devices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}.device{padding:16px;min-width:0}.device-top{display:flex;align-items:center;justify-content:space-between}.device-icon{width:42px;height:42px;display:grid;place-items:center;border-radius:13px;background:linear-gradient(145deg,#173b49,#292047);border:1px solid var(--line);font-size:20px}.status{font-size:10px;border-radius:99px;padding:6px 8px;color:var(--green);border:1px solid #63f0b230;background:#63f0b20a}.device h4{font-size:15px;margin:14px 0 5px;overflow-wrap:anywhere}.sub{font-size:10px;color:var(--muted)}.preview{height:132px;border-radius:14px;margin:14px 0;background:radial-gradient(circle at 50% 30%,#6b68c533,transparent 42%),linear-gradient(145deg,#161b2e,#0b0d17);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;position:relative}.phone{width:59px;height:99px;border:2px solid #a4afcc;border-radius:12px;background:linear-gradient(145deg,#183749,#1d1738);display:grid;place-items:center;font-size:22px;box-shadow:0 0 25px #70edff16;position:relative}.phone:before{content:"";position:absolute;top:4px;width:17px;height:3px;border-radius:9px;background:#a4afcc}.preview label{position:absolute;bottom:8px;color:#8793b5;font-size:8px;letter-spacing:1.5px}.specs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.spec{padding:9px 7px;background:#ffffff06;border:1px solid #ffffff0a;border-radius:9px;min-width:0}.spec small{display:block;font-size:9px;color:var(--muted)}.spec b{display:block;font-size:11px;margin-top:4px;white-space:nowrap}.cardbuttons{margin-top:12px;gap:7px}.cardbuttons .btn{flex:1;padding:10px 7px;font-size:10px}.device-tabs{display:flex;gap:9px;overflow-x:auto;padding:2px 2px 12px;margin-bottom:5px;scrollbar-width:thin}
+.tab{flex:0 0 auto;border:1px solid var(--line);background:#ffffff07;color:var(--muted);border-radius:12px;padding:10px 13px;cursor:pointer;font:700 11px system-ui;max-width:220px;white-space:nowrap}
+.tab.active{color:var(--cyan);border-color:#70edff70;background:#70edff12;box-shadow:0 0 20px #70edff0b}
+.active-wrap{max-width:560px}.empty{text-align:center;padding:32px;border:1px dashed var(--line);border-radius:18px;color:var(--muted)}.foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;color:#6e7894;font-size:9px;margin-top:24px}
+.getkey-panel{margin:24px 0;padding:22px;border:1px solid #ad8bff40;background:linear-gradient(135deg,#17172acc,#101d2bcc);backdrop-filter:blur(16px);border-radius:22px;box-shadow:0 18px 60px #0003}
+.getkey-head{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap}
+.getkey-title{margin:7px 0;font-size:23px;letter-spacing:-.5px}
+.key-badge{padding:8px 11px;border-radius:99px;border:1px solid #ad8bff55;background:#ad8bff12;color:#d9caff;font-size:10px;font-weight:800}
+.key-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+.key-box{padding:15px;border-radius:14px;border:1px solid var(--line);background:#ffffff06;min-width:0}
+.key-box small{display:block;color:var(--muted);font-size:10px;margin-bottom:8px}
+.key-value{font-weight:850;font-size:clamp(12px,2vw,16px);letter-spacing:1px;overflow-wrap:anywhere;color:var(--cyan)}
+.key-controls{display:flex;gap:9px;flex-wrap:wrap;margin-top:15px}
+.key-controls .btn{flex:1;min-width:145px}
+.key-message{margin-top:12px;padding:11px 13px;border-radius:11px;font-size:11px;line-height:1.6;background:#ffffff07;border:1px solid var(--line);color:var(--muted)}
+.key-message.good{color:var(--green);border-color:#63f0b240}
+.key-message.bad{color:#ff9eaf;border-color:#ff718540}
+.key-input{flex:2;min-width:180px;padding:12px;border-radius:10px;border:1px solid #ffffff24;background:#080b14;color:var(--text);outline:none;font:700 12px system-ui;letter-spacing:.5px}
+.key-input:focus{border-color:var(--cyan)}
+
+.gate{position:fixed;inset:0;z-index:100;display:flex;padding:16px;overflow:auto;background:radial-gradient(ellipse at 20% 10%,#3a2a86cc,transparent 45%),radial-gradient(ellipse at 85% 85%,#0f5566cc,transparent 45%),#05060cf2;backdrop-filter:blur(10px)}
+.gate.hide{display:none}
+.gate .getkey-panel{margin:auto;width:100%;max-width:520px;border-color:#70edff55;box-shadow:0 0 60px #70edff22,0 0 120px #ad8bff22;animation:gin .5s ease}
+.gate .getkey-title{font-size:28px}
+@keyframes gin{from{opacity:0;transform:translateY(18px) scale(.97)}to{opacity:1;transform:none}}
+body.locked .wrap,body.locked .topclock{filter:blur(8px);pointer-events:none;user-select:none}
+.topclock{position:sticky;top:0;z-index:50;display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap;padding:9px 12px;background:#090b14ee;backdrop-filter:blur(14px);border-bottom:1px solid #ad8bff40;font-size:12px;cursor:pointer}
+.topclock b{font-size:16px;letter-spacing:1.5px;color:var(--cyan);font-variant-numeric:tabular-nums}
+.topclock.off b{color:#ff9eaf}
+.tools{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin:22px 0}
+.tool{padding:18px}.tool h3{margin:0 0 4px;font-size:16px}
+.field{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.field>*{flex:1;min-width:80px}
+.key-input.sm{min-width:80px;flex:1}
+textarea.key-input{width:100%;min-height:84px;resize:vertical;font-weight:500;flex:none}
+select.key-input{flex:1}
+.clip-item{display:flex;gap:8px;align-items:center;justify-content:space-between;padding:8px 10px;margin-top:6px;border:1px solid var(--line);border-radius:9px;background:#ffffff06;font-size:11px}
+.clip-item span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+.clip-item .btn{flex:0 0 auto;padding:6px 9px;font-size:10px}
+@media(max-width:850px){.tools{grid-template-columns:1fr}}
+@media(max-width:850px){.hero{grid-template-columns:1fr}.devices{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:570px){.key-grid{grid-template-columns:1fr}.getkey-panel{padding:17px}.wrap{padding:16px 12px 32px}.devices{grid-template-columns:1fr}.hero-main{padding:22px}.hero h2{font-size:35px}.top{align-items:flex-start}.stats{flex-wrap:wrap}}
+.btn.locked{opacity:.55;border-style:dashed}#toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:500;max-width:90%;padding:11px 15px;border-radius:12px;background:#1b1f33;border:1px solid #ff718555;color:#ffb3c0;font:700 12px system-ui;display:none;text-align:center}</style></head>
+<body class="locked">
+<div class="gate" id="gate"><section class="getkey-panel" id="getkey">
+  <div class="getkey-head">
+    <div><div class="eyebrow">🔒 NHẬP KEY ĐỂ TRUY CẬP</div><h3 class="getkey-title">KHOIDZ <span class="gradient">GETKEY SYSTEM</span></h3><div class="muted">Nhập key để vào hệ thống · thời hạn 50 giờ (bản chính thức)</div></div>
+    <span class="key-badge">⌁ 50H ACCESS PASS</span>
+  </div>
+  <div class="key-grid">
+    <div class="key-box"><small>TRẠNG THÁI KEY</small><div class="key-value" id="issuedKey">Chưa kích hoạt</div></div>
+    <div class="key-box"><small>THỜI GIAN CÒN LẠI</small><div class="key-value" id="keyTimer">--:--:--</div></div>
+  </div>
+  <div class="key-message" id="keyStatus" role="status">Nhập key để truy cập. Key có hiệu lực 50 giờ kể từ lúc xác minh thành công.</div>
+  <div style="margin-top:18px">
+    <label for="keyInput" class="muted" style="display:block;margin-bottom:8px">NHẬP KEY</label>
+    <div class="key-controls" style="margin-top:0">
+      <input class="key-input" id="keyInput" autocomplete="off" spellcheck="false" placeholder="Nhập key của bạn...">
+      <button type="button" class="btn secondary" id="verifyKeyBtn">✓ Xác minh key</button>
+    </div>
+  </div>
+<div style="margin-top:18px;border-top:1px dashed #ffffff22;padding-top:16px">
+<label for="devInput" class="muted" style="display:block;margin-bottom:8px">🔒 KEY DEVELOPER (ADMIN)</label>
+<div class="key-controls" style="margin-top:0"><input class="key-input" id="devInput" type="password" autocomplete="off" placeholder="Key developer..."><button type="button" class="btn secondary" id="devBtn">🔓 Mở khoá Admin</button></div></div>
+<div style="margin-top:18px;text-align:center;font-size:10px;letter-spacing:.8px;color:#7d88a8">KEY: 6V6Cloudphonefree</div>
+<div id="uidShow" style="margin-top:6px;text-align:center;font-size:10px;color:#7d88a8"></div>
+</section></div>
+<div class="topclock off" id="topClock" title="Đi tới phần key"><span>⏱ KEY CÒN LẠI</span><b id="topClockTime">--:--:--</b><span id="topClockState" class="muted">Chưa kích hoạt</span></div>
+<div class="wrap">
+<header class="top"><div class="brand"><div class="logo">KO</div><div><h1>KHOIDZ OVERFLOW</h1><p>CLOUD PHONE PLATFORM</p></div></div><div class="stats"><div class="pill"><span class="dot"></span>Dashboard online</div><div class="pill">ANDROID CLOUD</div></div></header>
+<section class="hero"><div class="panel hero-main"><div class="eyebrow">YOUR VIRTUAL ANDROID SPACE</div><h2>Cloud Phone.<br><span class="gradient">Play without limits.</span></h2><p>Bảng điều khiển quản lý nhiều thẻ thiết bị, theo dõi cấu hình và mở phiên chơi chỉ với một lần chạm.</p><div class="actions"><button class="btn primary" id="createTop">＋ Tạo máy mới</button><button class="btn secondary" id="playFirst">↗ Vào Chơi</button></div></div>
+<aside class="panel hero-side"><div><div class="muted">THẺ THIẾT BỊ ĐÃ TẠO</div><div class="big"><span id="count">1</span> <span class="muted">máy</span></div><div class="bar"><span id="barfill"></span></div></div><div class="muted">Cloud Phone Free · Key VIP 50 giờ.</div></aside></section>
+
+
+
+<div class="head"><div><h3>Thiết bị của bạn</h3><p>Chọn tab để chuyển giữa các máy đã tạo</p></div><div class="actions"><button class="btn secondary" id="reset">↻ Làm mới</button><button class="btn primary" id="create">＋ Tạo máy</button></div></div>
+<nav class="device-tabs" id="deviceTabs" aria-label="Chuyển đổi thiết bị"></nav>
+<main id="activeDevice"></main>
+<section class="tools" id="tools">
+<div class="panel tool"><h3>🖥 Độ phân giải màn hình</h3><div class="muted" id="resFor">Áp dụng cho máy đang chọn</div>
+<div class="field"><select class="key-input" id="resPreset"><option value="720x1280">720 × 1280 (HD)</option><option value="1080x1920">1080 × 1920 (Full HD)</option><option value="1080x2400">1080 × 2400 (20:9)</option><option value="1440x2560">1440 × 2560 (2K)</option><option value="custom">Tùy chỉnh…</option></select></div>
+<div class="field"><input class="key-input sm" id="resW" type="number" min="240" max="4096" placeholder="Rộng"><input class="key-input sm" id="resH" type="number" min="240" max="4096" placeholder="Cao"><input class="key-input sm" id="resDpi" type="number" min="120" max="640" placeholder="DPI"></div>
+<div class="key-controls"><button type="button" class="btn primary" id="resApply">✓ Áp dụng</button></div><div class="key-message" id="resMsg">Chọn mẫu có sẵn hoặc nhập thông số riêng.</div></div>
+<div class="panel tool"><h3>📋 Bảng nhớ tạm → Cloud Phone</h3><div class="muted">Dán nội dung từ máy thật của bạn rồi gửi vào máy ảo</div>
+<div class="field"><textarea class="key-input" id="clipText" placeholder="Dán văn bản từ máy thật vào đây..."></textarea></div>
+<div class="key-controls"><button type="button" class="btn secondary" id="clipPaste">⎘ Lấy từ bảng nhớ tạm</button><button type="button" class="btn primary" id="clipSend">➤ Gửi vào Cloud Phone</button></div>
+<div class="key-message" id="clipMsg">Nội dung gửi sẽ lưu theo từng máy.</div><div id="clipList"></div></div>
+</section>
+<section class="panel tool" id="adminPanel" style="margin:22px 0"><h3><span id="admLock">🔒</span> Bảng điều khiển ADMIN</h3><div class="muted" id="admNote"></div>
+<div class="key-controls"><button type="button" class="btn secondary" id="admDelDev">Xoá máy đang chọn</button><button type="button" class="btn secondary" id="admDelAll">Xoá TẤT CẢ máy</button><button type="button" class="btn secondary" id="admResetKeys">Xoá TẤT CẢ key người dùng</button><button type="button" class="btn secondary" id="admExtend">Gia hạn +50h</button><button type="button" class="btn secondary" id="admLogout">Đăng xuất admin</button></div>
+<div class="key-message" id="admMsg">Các nút có hình 🔒 chỉ dành cho Admin. Bấm vào sẽ yêu cầu key developer.</div></section>
+<footer class="foot"><span>© 2026 KHOIDZ OVERFLOW</span><span>VIRTUAL DEVICE MANAGER</span></footer></div>
+<script>
+const PLAY_URL = "https://www.uptoplay.net/runapk/create-androidapkxx.php";
+/* ===== CẤU HÌNH KEY ===== */
+const FIXED_KEY = "6V6Cloudphonefree";
+const KEY_LIFETIME_MS = 50 * 60 * 60 * 1000;
+
+const starter = [{id:1,name:"Thiết Bị Pro Android Lite",cpu:"8 vCPU*",ram:"8 GB*",fps:"60 FPS*",w:1080,h:1920,dpi:420,clip:[]}];
+let devices = starter.map(x => ({...x}));
+let nextId = 2;
+let activeId = 1;
+const icons = ["📱","🎮","⚡","🚀","🛰️","💠"];
+const $ = id => document.getElementById(id);
+function esc(value) {
+  return String(value).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+function saveState() {
+  try {
+    localStorage.setItem("ko_cloud_devices", JSON.stringify(devices));
+    localStorage.setItem("ko_cloud_active", String(activeId ?? ""));
+  } catch (e) {}
+}
+function loadState() {
+  try {
+    const raw = localStorage.getItem("ko_cloud_devices");
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      if (Array.isArray(parsed)) devices = parsed.filter(d => d && Number.isFinite(Number(d.id)));
+    }
+    const savedActive = Number(localStorage.getItem("ko_cloud_active"));
+    if (savedActive) activeId = savedActive;
+    nextId = Math.max(0, ...devices.map(d => Number(d.id) || 0)) + 1;
+  } catch (e) {
+    devices = starter.map(x => ({...x})); nextId = 2; activeId = 1;
+  }
+}
+function render() {
+  $("count").textContent = devices.length;
+  $("barfill").style.width = Math.min(100, devices.length * 12) + "%";
+  const tabs = $("deviceTabs"), root = $("activeDevice");
+  if (!devices.length) {
+    tabs.innerHTML = "";
+    root.innerHTML = '<div class="empty">Chưa có máy nào. Nhấn “Tạo máy” để thêm.</div>';
+    saveState(); syncTools(); return;
+  }
+  if (!devices.some(d => Number(d.id) === Number(activeId))) activeId = devices[0].id;
+  tabs.innerHTML = devices.map(d =>
+    `<button type="button" class="tab ${Number(d.id) === Number(activeId) ? "active" : ""}" data-device-id="${Number(d.id)}">${icons[(Number(d.id)-1)%icons.length]} ${esc(d.name)}</button>`
+  ).join("");
+  const d = devices.find(x => Number(x.id) === Number(activeId));
+  const ic = icons[(Number(d.id)-1)%icons.length];
+  root.innerHTML = `<article class="device active-wrap">
+    <div class="device-top"><div class="device-icon">${ic}</div><span class="status">● Sẵn sàng</span></div>
+    <h4>${esc(d.name)}</h4><div class="sub">Android Cloud · Thẻ #${d.id} · ${resOf(d).w}×${resOf(d).h} · ${resOf(d).dpi} dpi</div>
+    <div class="preview"><div class="phone" style="width:${Math.round(99*resOf(d).w/resOf(d).h)}px">${ic}</div><label>VIRTUAL ANDROID DEVICE</label></div>
+    <div class="specs">
+      <div class="spec"><small>CPU mẫu</small><b>${esc(d.cpu)}</b></div>
+      <div class="spec"><small>RAM mẫu</small><b>${esc(d.ram)}</b></div>
+      <div class="spec"><small>Mục tiêu</small><b>${esc(d.fps)}</b></div>
+    </div>
+    <div class="cardbuttons">
+      <button type="button" class="btn primary" data-action="play" data-id="${d.id}">↗ Vào Chơi</button>
+      <button type="button" class="btn secondary" data-action="rename" data-id="${d.id}">✎ Đổi tên</button>
+      <button type="button" class="btn secondary${isAdmin() ? "" : " locked"}" data-action="remove" data-id="${d.id}">${isAdmin() ? "×" : "🔒"} Xóa máy</button>
+    </div></article>`;
+  saveState();
+  syncTools();
+}
+function switchDevice(id) {
+  if (!devices.some(d => Number(d.id) === Number(id))) return;
+  activeId = Number(id); render();
+}
+function createDevice() {
+  if (devices.length >= 30) { alert("Giới hạn 30 thẻ thiết bị."); return; }
+  const id = nextId++;
+  devices.push({id, name:"Cloud Phone " + String(id).padStart(2,"0"), cpu:"8 vCPU*", ram:"8 GB*", fps:"60 FPS*",w:1080,h:1920,dpi:420,clip:[]});
+  activeId = id; render();
+}
+function play(id) {
+  if (!devices.some(d => Number(d.id) === Number(id))) return;
+  const r = activeKeyRecord();
+  if (!isAdmin() && (!r || !r.verified)) {
+    setKeyMessage("Bạn cần nhập key trước khi vào chơi.", "bad");
+    $("getkey").scrollIntoView({behavior:"smooth"});
+    return;
+  }
+  window.open(PLAY_URL, "_blank");
+}
+function renameDevice(id) {
+  const d = devices.find(x => Number(x.id) === Number(id));
+  if (!d) return;
+  const name = prompt("Tên mới cho thiết bị:", d.name);
+  if (name && name.trim()) { d.name = name.trim().slice(0,48); render(); }
+}
+function removeDevice(id) {
+  devices = devices.filter(d => Number(d.id) !== Number(id));
+  if (Number(activeId) === Number(id)) activeId = devices.length ? devices[0].id : null;
+  render();
+}
+$("deviceTabs").addEventListener("click", e => {
+  const b = e.target.closest("[data-device-id]");
+  if (b) switchDevice(Number(b.dataset.deviceId));
+});
+$("activeDevice").addEventListener("click", e => {
+  const b = e.target.closest("[data-action]");
+  if (!b) return;
+  const id = Number(b.dataset.id);
+  if (b.dataset.action === "play") play(id);
+  if (b.dataset.action === "rename") renameDevice(id);
+  if (b.dataset.action === "remove") needAdmin(() => removeDevice(id));
+});
+$("create").addEventListener("click", createDevice);
+$("createTop").addEventListener("click", createDevice);
+$("playFirst").addEventListener("click", () => {
+  if (devices.length) play(activeId ?? devices[0].id);
+  else alert("Hãy tạo máy trước.");
+});
+$("reset").addEventListener("click", () => {
+  needAdmin(() => ask("Khôi phục danh sách về máy mẫu?", () => {
+    devices = starter.map(x => ({...x})); activeId = 1; nextId = 2; render();
+  }));
+});
+
+/* ===== CỔNG KEY ===== */
+function lockSite(on){
+  $("gate").classList.toggle("hide",!on);
+  document.body.classList.toggle("locked",on);
+}
+/* ===== ĐỒNG HỒ TRÊN CÙNG ===== */
+function topClockUpdate(r){
+  const box=$("topClock"), t=$("topClockTime"), st=$("topClockState");
+  if(!r&&isAdmin()){box.classList.remove("off");t.textContent="ADMIN";st.textContent="Developer · không giới hạn";return;}
+  if(!r){box.classList.add("off");t.textContent="00:00:00";st.textContent="Chưa kích hoạt / hết hạn";return;}
+  box.classList.remove("off");
+  const rem=Math.max(0,r.expiresAt-nowT(r));
+  t.textContent=[Math.floor(rem/3600000),Math.floor(rem%3600000/60000),Math.floor(rem%60000/1000)].map(n=>String(n).padStart(2,"0")).join(":");
+  st.textContent=r.verified?"Đã xác minh · 50h":"Chưa xác minh key";
+}
+$("topClock").addEventListener("click",()=>$("getkey").scrollIntoView({behavior:"smooth"}));
+
+/* ===== ĐỘ PHÂN GIẢI + BẢNG NHỚ TẠM ===== */
+function resOf(d){return {w:Number(d.w)||1080,h:Number(d.h)||1920,dpi:Number(d.dpi)||420};}
+function curDev(){return devices.find(x=>Number(x.id)===Number(activeId));}
+function msg(id,text,kind){const e=$(id);e.textContent=text;e.className="key-message"+(kind?" "+kind:"");}
+function syncTools(){
+  const d=curDev(), dis=!d;
+  ["resPreset","resW","resH","resDpi","resApply","clipText","clipPaste","clipSend"].forEach(i=>$(i).disabled=dis);
+  if(!d){$("clipList").innerHTML="";$("resFor").textContent="Chưa có máy nào";return;}
+  const r=resOf(d);
+  $("resFor").textContent="Áp dụng cho: "+d.name;
+  $("resW").value=r.w;$("resH").value=r.h;$("resDpi").value=r.dpi;
+  const key=r.w+"x"+r.h;
+  $("resPreset").value=[...$("resPreset").options].some(o=>o.value===key)?key:"custom";
+  const list=Array.isArray(d.clip)?d.clip:[];
+  $("clipList").innerHTML=list.map((c,i)=>`<div class="clip-item"><span>${esc(c.slice(0,80))}</span><button type="button" class="btn secondary" data-clip="${i}">Sao chép</button></div>`).join("");
+}
+$("resPreset").addEventListener("change",()=>{
+  const v=$("resPreset").value; if(v==="custom")return;
+  const [w,h]=v.split("x"); $("resW").value=w;$("resH").value=h;
+});
+$("resApply").addEventListener("click",()=>{
+  const d=curDev(); if(!d)return;
+  const w=Math.round(Number($("resW").value)),h=Math.round(Number($("resH").value)),dpi=Math.round(Number($("resDpi").value));
+  if(!(w>=240&&w<=4096&&h>=240&&h<=4096&&dpi>=120&&dpi<=640)){msg("resMsg","Thông số không hợp lệ (cạnh 240–4096, DPI 120–640).","bad");return;}
+  d.w=w;d.h=h;d.dpi=dpi;render();
+  msg("resMsg",`Đã áp dụng ${w}×${h} · ${dpi} dpi cho ${d.name}.`,"good");
+});
+$("clipPaste").addEventListener("click",async()=>{
+  try{$("clipText").value=await navigator.clipboard.readText();msg("clipMsg","Đã lấy nội dung từ bảng nhớ tạm.","good");}
+  catch(e){$("clipText").focus();msg("clipMsg","Trình duyệt chặn đọc tự động. Hãy dán thủ công vào ô (nhấn giữ → Dán).","bad");}
+});
+$("clipSend").addEventListener("click",async()=>{
+  const d=curDev(),text=$("clipText").value;
+  if(!d)return; if(!text.trim()){msg("clipMsg","Hãy dán nội dung cần gửi.","bad");return;}
+  if(text.length>5000){msg("clipMsg","Tối đa 5000 ký tự.","bad");return;}
+  d.clip=[text,...(Array.isArray(d.clip)?d.clip:[]).filter(x=>x!==text)].slice(0,5);
+  render();
+  let copied=true;try{await navigator.clipboard.writeText(text);}catch(e){copied=false;}
+  msg("clipMsg",`Đã gửi vào bảng nhớ tạm của ${d.name}.`+(copied?" Trong phiên chơi, nhấn giữ ô nhập → Dán.":" Hãy sao chép lại từ danh sách bên dưới rồi dán trong phiên chơi."),"good");
+});
+$("clipList").addEventListener("click",async e=>{
+  const b=e.target.closest("[data-clip]"),d=curDev(); if(!b||!d)return;
+  const t=(d.clip||[])[Number(b.dataset.clip)]; if(t==null)return;
+  try{await navigator.clipboard.writeText(t);msg("clipMsg","Đã sao chép.","good");}catch(err){$("clipText").value=t;$("clipText").select();msg("clipMsg","Đã đưa vào ô, hãy sao chép thủ công.");}
+});
+
+/* ===== GETKEY ===== */
+const KEY_STORAGE = "ko_cloud_getkey_v2";
+let keyTicker = null;
+
+function randToken(n = 24) {
+  const a = "abcdefghijkmnpqrstuvwxyz23456789", bytes = new Uint8Array(n);
+  if (window.crypto && crypto.getRandomValues) crypto.getRandomValues(bytes);
+  else for (let i = 0; i < n; i++) bytes[i] = Math.floor(Math.random() * 256);
+  let s = ""; for (const b of bytes) s += a[b % a.length];
+  return s;
+}
+function readJSON(k) { try { return JSON.parse(localStorage.getItem(k) || "null"); } catch (e) { return null; } }
+function setKeyMessage(message, kind = "") {
+  const el = $("keyStatus");
+  el.textContent = message;
+  el.className = "key-message" + (kind ? " " + kind : "");
+}
+/* Lưu key "ghim cứng": 3 nơi (localStorage x2 + cookie), không xoá khi hết hạn, chống lùi giờ */
+const USED_STORAGE = "ko_cloud_used_v2";
+let tickN = 0;
+function readRec() {
+  let r = readJSON(KEY_STORAGE) || readJSON(USED_STORAGE);
+  if (!r) {
+    try { const m = document.cookie.match(/(?:^|; )ko_k=([^;]*)/); if (m) r = JSON.parse(decodeURIComponent(m[1])); } catch (e) {}
+  }
+  return r && typeof r.key === "string" && Number.isFinite(r.expiresAt) ? r : null;
+}
+function writeRec(r) {
+  const j = JSON.stringify(r);
+  try { localStorage.setItem(KEY_STORAGE, j); localStorage.setItem(USED_STORAGE, j); } catch (e) {}
+  try { document.cookie = "ko_k=" + encodeURIComponent(j) + ";max-age=31536000;path=/;SameSite=Lax"+(location.protocol==="https:"?";Secure":""); } catch (e) {}
+}
+function nowT(r) { return Math.max(Date.now(), (r && r.seen) || 0); }
+function isExpired(r) { return !!r && nowT(r) >= r.expiresAt; }
+function activeKeyRecord() {
+  const r = readRec();
+  if (!r || r.key !== FIXED_KEY || isExpired(r)) return null;
+  return r;
+}
+function renderKey() {
+  const r = activeKeyRecord(), old = readRec(), timer = $("keyTimer");
+  const dead = !r && old && old.key === FIXED_KEY && isExpired(old);
+  $("issuedKey").textContent = r ? "ĐÃ KÍCH HOẠT" : (dead ? "ĐÃ HẾT 50 GIỜ" : "Chưa kích hoạt");
+  topClockUpdate(r);
+  if (!r && !isAdmin()) lockSite(true);
+  if (r) {
+    r.seen = Math.max(Date.now(), r.seen || 0);
+    if (++tickN % 5 === 0) writeRec(r);
+    const rem = Math.max(0, r.expiresAt - r.seen);
+    const h = Math.floor(rem / 3600000), m = Math.floor((rem % 3600000) / 60000), s = Math.floor((rem % 60000) / 1000);
+    timer.textContent = [h, m, s].map(n => String(n).padStart(2, "0")).join(":");
+    timer.style.color = "var(--cyan)";
+  } else {
+    timer.textContent = dead ? "ĐÃ HẾT HẠN" : "CHƯA CÓ";
+    timer.style.color = "#ff9eaf";
+  }
+}
+function verifyKey() {
+  const input = $("keyInput").value.trim();
+  if (!input) { setKeyMessage("Vui lòng nhập key.", "bad"); return; }
+  if (input !== FIXED_KEY) { setKeyMessage("SAI KEY! Vui lòng kiểm tra lại.", "bad"); return; }
+  const old = readRec();
+  if (old && old.key === FIXED_KEY && isExpired(old)) { renderKey(); setKeyMessage("Key này đã dùng hết 50 giờ và không thể kích hoạt lại.", "bad"); return; }
+  let r = activeKeyRecord();
+  if (!r) {
+    const now = Date.now();
+    r = {key:FIXED_KEY, uid:randToken(12), createdAt:now, expiresAt:now + KEY_LIFETIME_MS, seen:now, verified:true};
+  }
+  r.verified = true;
+  writeRec(r);
+  if (!readRec()) { setKeyMessage("Không thể lưu key trên trình duyệt này.", "bad"); return; }
+  renderKey();
+  setKeyMessage("KEY HỢP LỆ! Đang vào hệ thống... Hiệu lực 50 giờ.", "good");
+  setTimeout(() => lockSite(false), 700);
+}
+$("verifyKeyBtn").addEventListener("click", verifyKey);
+$("keyInput").addEventListener("keydown", e => { if (e.key === "Enter") verifyKey(); });
+
+/* ===== ADMIN / DEVELOPER ===== */
+var DEV_KEY_HASH = "bfcbbb6f7c631416050f2719b36d00078643e18d35e223ecbbb8361115c9b5bc"; // SHA-256 của key developer (code không chứa key gốc)
+function sha256(ascii){
+ function rr(v,a){return (v>>>a)|(v<<(32-a));}
+ var mp=Math.pow,mw=mp(2,32),L='length',i,j,result='',words=[],bl=ascii[L]*8;
+ var hash=sha256.h=sha256.h||[],k=sha256.k=sha256.k||[],pc=k[L],comp={};
+ for(var c=2;pc<64;c++){if(!comp[c]){for(i=0;i<313;i+=c)comp[i]=c;hash[pc]=(mp(c,.5)*mw)|0;k[pc++]=(mp(c,1/3)*mw)|0;}}
+ ascii+='\x80';while(ascii[L]%64-56)ascii+='\x00';
+ for(i=0;i<ascii[L];i++){j=ascii.charCodeAt(i);if(j>>8)return "";words[i>>2]|=j<<((3-i)%4)*8;}
+ words[words[L]]=((bl/mw)|0);words[words[L]]=(bl);
+ for(j=0;j<words[L];){
+  var w=words.slice(j,j+=16),old=hash;hash=hash.slice(0,8);
+  for(i=0;i<64;i++){
+   var w15=w[i-15],w2=w[i-2],a=hash[0],e=hash[4];
+   var t1=hash[7]+(rr(e,6)^rr(e,11)^rr(e,25))+((e&hash[5])^((~e)&hash[6]))+k[i]+(w[i]=(i<16)?w[i]:(w[i-16]+(rr(w15,7)^rr(w15,18)^(w15>>>3))+w[i-7]+(rr(w2,17)^rr(w2,19)^(w2>>>10)))|0);
+   var t2=(rr(a,2)^rr(a,13)^rr(a,22))+((a&hash[1])^(a&hash[2])^(hash[1]&hash[2]));
+   hash=[(t1+t2)|0].concat(hash);hash[4]=(hash[4]+t1)|0;
+  }
+  for(i=0;i<8;i++)hash[i]=(hash[i]+old[i])|0;
+ }
+ for(i=0;i<8;i++)for(j=3;j+1;j--){var b=(hash[i]>>(j*8))&255;result+=((b<16)?0:'')+b.toString(16);}
+ return result;
+}
+function isAdmin(){ try { return localStorage.getItem("ko_cloud_admin") === DEV_KEY_HASH; } catch (e) { return false; } }
+function toast(t){
+  let el = $("toast");
+  if (!el) { el = document.createElement("div"); el.id = "toast"; document.body.appendChild(el); }
+  el.textContent = t; el.style.display = "block";
+  clearTimeout(toast.t); toast.t = setTimeout(() => { el.style.display = "none"; }, 2600);
+}
+function dlg(title, withInput, cb){
+  const o = document.createElement("div");
+  o.style.cssText = "position:fixed;inset:0;z-index:400;display:flex;align-items:center;justify-content:center;padding:18px;background:#05060ccc";
+  o.innerHTML = '<div style="width:100%;max-width:360px;padding:20px;border-radius:18px;border:1px solid #ad8bff55;background:#12162a;color:#f4f6ff;font:600 13px system-ui"><div data-t style="font-weight:800;margin-bottom:12px;line-height:1.5"></div>' + (withInput ? '<input type="password" autocomplete="off" class="key-input" style="width:100%" placeholder="Key developer...">' : '') + '<div class="key-controls"><button type="button" class="btn secondary" data-x>Huỷ</button><button type="button" class="btn primary" data-ok>OK</button></div></div>';
+  o.querySelector("[data-t]").textContent = title;
+  document.body.appendChild(o);
+  const inp = o.querySelector("input"); if (inp) inp.focus();
+  o.querySelector("[data-x]").onclick = () => o.remove();
+  o.querySelector("[data-ok]").onclick = () => { const v = inp ? inp.value.trim() : ""; o.remove(); cb(v); };
+  if (inp) inp.addEventListener("keydown", e => { if (e.key === "Enter") o.querySelector("[data-ok]").click(); });
+}
+function ask(msg, cb){ dlg(msg, false, () => cb()); }
+function grantAdmin(){
+  try { localStorage.setItem("ko_cloud_admin", DEV_KEY_HASH); } catch (e) {}
+  applyRole(); render(); renderKey();
+}
+function needAdmin(cb){
+  if (isAdmin()) { cb(); return; }
+  dlg("🔒 Nhập key developer để dùng tính năng Admin", true, v => {
+    if (!v) return;
+    if (sha256(v) !== DEV_KEY_HASH) { toast("SAI KEY DEVELOPER!"); return; }
+    grantAdmin(); cb();
+  });
+}
+function admMsg(t, kind){ const e = $("admMsg"); e.textContent = t; e.className = "key-message" + (kind ? " " + kind : ""); }
+function applyRole(){
+  const a = isAdmin();
+  $("admLock").textContent = a ? "🔓" : "🔒";
+  $("admNote").textContent = a ? "Đã mở khoá quyền Admin (Developer) · ID: " + myUid() : "Chỉ Admin mới dùng được. Bấm nút bất kỳ để nhập key developer.";
+  [["admDelDev","Xoá máy đang chọn"],["admDelAll","Xoá TẤT CẢ máy"],["admResetKeys","Xoá TẤT CẢ key người dùng"],["admExtend","Gia hạn +50h"]].forEach(([id, l]) => {
+    const b = $(id); b.textContent = (a ? "" : "🔒 ") + l; b.classList.toggle("locked", !a);
+  });
+  $("admLogout").style.display = a ? "" : "none";
+  $("reset").textContent = (a ? "↻" : "🔒") + " Làm mới";
+}
+$("devBtn").addEventListener("click", () => {
+  const v = $("devInput").value.trim();
+  if (!v) { setKeyMessage("Nhập key developer.", "bad"); return; }
+  if (sha256(v) !== DEV_KEY_HASH) { setKeyMessage("SAI KEY DEVELOPER!", "bad"); return; }
+  grantAdmin();
+  setKeyMessage("🔓 Đã mở khoá ADMIN. Đang vào hệ thống...", "good");
+  setTimeout(() => lockSite(false), 700);
+});
+$("devInput").addEventListener("keydown", e => { if (e.key === "Enter") $("devBtn").click(); });
+$("admDelDev").addEventListener("click", () => needAdmin(() => {
+  const d = curDev(); if (!d) { toast("Chưa có máy nào."); return; }
+  ask("Xoá máy " + d.name + "?", () => { removeDevice(d.id); admMsg("Đã xoá " + d.name + ".", "good"); });
+}));
+$("admDelAll").addEventListener("click", () => needAdmin(() => {
+  ask("Xoá TẤT CẢ máy?", () => { devices = []; activeId = null; render(); admMsg("Đã xoá tất cả máy.", "good"); });
+}));
+$("admResetKeys").addEventListener("click", () => needAdmin(() => {
+  ask("Xoá key người dùng trên thiết bị này? (Muốn xoá key của mọi người: dùng admin.html)", () => { resetKeyLocal(); admMsg("Đã xoá key trên thiết bị này.", "good"); });
+}));
+$("admExtend").addEventListener("click", () => needAdmin(() => {
+  const now = Date.now();
+  const r = readRec() || {key:FIXED_KEY, uid:randToken(12), createdAt:now, seen:now, expiresAt:now};
+  r.expiresAt = Math.max(r.expiresAt, nowT(r)) + KEY_LIFETIME_MS; r.verified = true;
+  writeRec(r); renderKey(); admMsg("Đã gia hạn +50 giờ cho thiết bị này.", "good");
+}));
+$("admLogout").addEventListener("click", () => {
+  try { localStorage.removeItem("ko_cloud_admin"); } catch (e) {}
+  applyRole(); render(); renderKey(); admMsg("Đã đăng xuất Admin.");
+});
+
+loadState();
+render();
+applyRole();
+renderKey();
+{const r0=activeKeyRecord();lockSite(!isAdmin()&&!(r0&&r0.verified));renderKey();const o0=readRec();if(!r0&&o0&&o0.key===FIXED_KEY&&isExpired(o0))setKeyMessage("Key đã hết 50 giờ và không thể dùng lại.","bad");}
+keyTicker = setInterval(renderKey, 1000);
+
+/* ===== KẾT NỐI ADMIN (qua file control.json trên GitHub) ===== */
+// Trên GitHub Pages để trống. Trong app APK: dán https://TEN.github.io/REPO/control.json
+const CONTROL_URL = "";
+const SYNC_MS = 20000;
+function myUid() {
+  let u = null;
+  try { u = localStorage.getItem("ko_cloud_uid"); } catch (e) {}
+  if (!u) { u = randToken(10); try { localStorage.setItem("ko_cloud_uid", u); } catch (e) {} }
+  return u;
+}
+function resetKeyLocal() {
+  try { localStorage.removeItem(KEY_STORAGE); localStorage.removeItem(USED_STORAGE); } catch (e) {}
+  try { document.cookie = "ko_k=;max-age=0;path=/"; } catch (e) {}
+  renderKey(); lockSite(!isAdmin());
+  setKeyMessage("Key của bạn đã được admin đặt lại. Nhập key để kích hoạt lại 50 giờ.", "bad");
+}
+function wipeDevicesLocal() {
+  devices = starter.map(x => ({...x})); activeId = 1; nextId = 2; render();
+}
+function showMaint(on, text) {
+  let m = $("maint");
+  if (!m) {
+    m = document.createElement("div"); m.id = "maint";
+    m.style.cssText = "position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:24px;text-align:center;background:#05060cf5;color:#f4f6ff;font:700 16px system-ui;line-height:1.7";
+    document.body.appendChild(m);
+  }
+  m.textContent = "🛠 " + (text || "Hệ thống đang bảo trì, vui lòng quay lại sau.");
+  m.style.display = on ? "flex" : "none";
+}
+async function syncRemote() {
+  let url = CONTROL_URL;
+  if (!url) { if (!/^https?:$/.test(location.protocol)) return; url = "control.json"; }
+  try {
+    const res = await fetch(url + (url.includes("?") ? "&" : "?") + "t=" + Date.now(), {cache:"no-store"});
+    if (!res.ok) return;
+    const c = await res.json(), uid = myUid();
+    const cur = {k:+c.keyEpoch || 0, d:+c.deviceEpoch || 0, rk:+((c.resetUids || {})[uid]) || 0, wd:+((c.wipeUids || {})[uid]) || 0};
+    let ap = null;
+    try { ap = JSON.parse(localStorage.getItem("ko_cloud_applied") || "null"); } catch (e) {}
+    if (ap) {
+      if (cur.k > ap.k || cur.rk > ap.rk) resetKeyLocal();
+      if (cur.d > ap.d || cur.wd > ap.wd) wipeDevicesLocal();
+    }
+    const keep = ap ? {k:Math.max(cur.k, ap.k), d:Math.max(cur.d, ap.d), rk:Math.max(cur.rk, ap.rk), wd:Math.max(cur.wd, ap.wd)} : cur;
+    try { localStorage.setItem("ko_cloud_applied", JSON.stringify(keep)); } catch (e) {}
+    showMaint(!!c.maintenance, c.message);
+  } catch (e) {}
+}
+{const u = $("uidShow"); if (u) u.textContent = "ID: " + myUid();}
+syncRemote();
+setInterval(syncRemote, SYNC_MS);
+</script></body></html>
